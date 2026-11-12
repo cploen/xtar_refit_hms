@@ -10,7 +10,7 @@ comparing figures or model names across the two directories.
 | File | Use |
 |---|---|
 | [Study reference](STUDY_REFERENCE.md) | Method, exact results, interpretation and reproducibility |
-| [Slide deck](slides/xtar_study_summary.pptx) | Eight summary slides plus two original summary figures |
+| [Slide deck](slides/xtar_study_summary.pptx) | Eight summary slides, two figure reading guides and two original summary figures |
 | [Tolerance selection](archive/tolerance_scan/selection.tsv) | Strongest candidate and simplicity result for each policy/family |
 | [Reserved summary](archive/tolerance_scan/reserved_summary.tsv) | Five-term gain, downstream changes and reserved guard outcomes |
 | [Five-term model](archive/tolerance_scan/models/cell2_overall2_Beam.json) | Feature labels, final coefficients, rank and condition number |
@@ -105,6 +105,43 @@ wider residuals. Bias maps have a different meaning: their sign is the direction
 of the mean shift, not a general improvement/worsening label. All four targets
 and all foils appear in the archived full-resolution pages. N < 100 cells
 remain uncertified. Small rounded plot labels do not replace the exact TSVs.
+
+### Reading the tolerance summary
+
+The upper panels plot one correction model per dot after the physical and
+mean-bias checks. Vertical position is validation xtar SD reduction, so higher
+is better. The horizontal coordinate is the worst downstream SD increase:
+across populated cells at left and whole core/shoulder/union populations at
+right. Moving right permits more downstream degradation. Dotted vertical lines
+mark the SD limits. Favorable tradeoffs lie toward the upper left, subject to
+all the remaining constraints.
+
+The lower-left panel compares the strongest eligible EN and Beam models across
+the three tolerance policies. Positive means narrower xtar residuals. The flat
+Beam curves show that the same model leads under all three policies. In the
+lower-right panel the sign convention changes: negative SD change means a
+narrower residual. The approximately −0.370% xptar and −0.221% xtar values are
+constant across policies. The former is overall population SD, while the latter
+is pooled within-cell SD.
+
+### Reading the original search summary
+
+Panel A plots validation xtar SD in mm against nonzero correction term count.
+Lower is better. The dashed line is zero correction, and the stars identify
+the original simplicity-selected models at zero terms. The blue curve shows
+the best passing Beam model at each term count.
+
+Panel B uses **variance improvement**, not SD improvement. Approximately 0.392%
+variance reduction corresponds to 0.196% SD reduction. That small gain leaves
+zero correction within the original 0.5% variance simplicity allowance.
+Panel C shows numerical conditioning of the scaled correction design, with a
+logarithmic vertical axis. Smaller condition numbers indicate a more stable
+design; the plotted points describe the best passing model at each term count.
+
+Panel D shows reserved pooled within-cell xtar SD. The completed refit narrows
+the residuals relative to original 2018. The EN and Beam bars represent the
+original selected zero-correction models and therefore coincide with the refit.
+They do not depict the informational five-term model's reserved result.
 
 ## Models, provenance and source
 

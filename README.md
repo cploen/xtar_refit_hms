@@ -1,11 +1,14 @@
 # HMS xtar correction study
 
 This repository archives the 12 November 2026 study of a small correction to
-reconstructed **xtar** in the completed HMS 2018 optics refit. The purpose was
-to improve that reconstruction before using it for NPS optics refits.
+reconstructed **xtar** in the completed HMS 2018 optics refit. The ample 2018
+sieve-slit sample provided the study data. The aim was to improve xtar beyond
+the completed fit and explore a method that could support NPS optics at both
+high and low momentum.
 
-The hypothesis was that a regularized correction using measured inputs could
-narrow xtar residuals without materially degrading downstream reconstruction.
+The hypothesis was that a reduced basis selected with Elastic Net and beam
+search could narrow xtar residuals despite correlations with other variables,
+while strict residual limits preserved downstream performance.
 The transport coefficients remained fixed. The study used three validation
 folds grouped by run, followed by evaluation on a previously inspected reserved
 development sample.

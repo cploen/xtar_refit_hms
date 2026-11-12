@@ -8,11 +8,21 @@ replay closure or report a new optics refit.
 
 ## 1. Purpose and hypothesis
 
-The practical aim was to improve the completed 2018 reconstruction before
-using it as the starting point for NPS optics refits. The experiment tested
-whether a small, regularized, measured-input correction to reconstructed xtar
-could reduce its residual spread while keeping downstream resolution and bias
-within explicit limits.
+The practical aim was to use the ample 2018 sieve-slit data to determine
+whether a conservative xtar fit could improve resolution beyond the completed
+fit of the other coefficients. The study motivation was that correlations
+between xtar and other reconstruction variables make a separate fit difficult.
+A reduced basis selected with Elastic Net and beam search might improve xtar
+while strict limits preserve the performance of the other reconstructed
+variables. A successful method could support NPS optics at both high and low
+momentum. Transfer to those NPS settings is an intended application, rather
+than a result established by this 2018 study.
+
+The completed experiment implemented this idea as a small, regularized,
+measured-input additive correction to reconstructed xtar. It did not refit
+xtar-dependent transport coefficients. Downstream resolution and bias were
+allowed to change within explicit limits, rather than being held exactly
+constant.
 
 All coefficients of the completed 2018 transport matrix remained fixed.
 Changing its xtar input can nevertheless change reconstructed xptar, yptar,
@@ -118,6 +128,17 @@ measured quantities: xfp, xpfp, yfp, ypfp and beam y. Each basis column includes
 There is no free correction intercept and no run, foil, hole identity or truth
 predictor.
 
+Run, foil and hole identity mean calibration labels: the data-taking run,
+the known target foil and the known sieve aperture. Including them as model
+inputs could let the fit memorize calibration settings. Geometric truth means
+quantities derived from the known calibration geometry, such as xtarT and
+the true target angles. These provide supervised training targets and residual
+references, but an ordinary event does not supply its own true answer as an
+input. The exclusion applies to predictors, not to the calibration events or
+to the use of truth for training and evaluation. The aim is a correction that
+uses measured quantities available during reconstruction. This design choice
+does not itself prove that the correction transfers to a new setting.
+
 Elastic net (EN) screens the basis using its penalized coefficients. The beam
 search has width 30 and a maximum of six nonzero terms. Ridge strength 0.03
 remains in the final fit. Candidate amplitudes are 0.1, 0.25, 0.5 and 1, with
@@ -158,6 +179,25 @@ The guards apply in each validation fold and in pooled validation, then again
 after the final solve on the reserved sample. For each downstream target,
 additional absolute mean bias may not exceed **2% of its baseline SD**. A
 reduction in offset cannot conceal a width loss or count as a width gain.
+
+The term **bias guard** denotes this separate mean-residual constraint:
+
+```text
+abs(mean_candidate) <= abs(mean_baseline) + 0.02 * SD_baseline
+```
+
+It limits the additional absolute displacement, rather than requiring a zero
+mean or limiting total bias to 2% of SD. For example, a baseline SD of 3 mrad
+permits at most 0.06 mrad additional absolute mean residual. The resolution
+metric removes cell means to prevent pure offset shifts from appearing as
+width improvements, while the bias guard still checks those shifts.
+
+A **candidate** is one proposed correction model, specified by its basis,
+regularization and amplitude. An **eligible candidate** passes every applicable
+residual-SD, mean-bias, correction-size, numerical-conditioning and iteration
+requirement. Counts of eligible candidates therefore count models. Events are
+the observations used to fit and evaluate them, and terms are the nonzero
+basis components within one model.
 
 Selection requires no increase in xtar MSE and at least 0.1% xtar SD improvement
 to retain a correction. Among candidates within 0.5% **variance** of the best,
