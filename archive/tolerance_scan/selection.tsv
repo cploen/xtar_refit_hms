@@ -1,0 +1,7 @@
+case	family	id	terms	validation_xtar_width_gain_pct	worst_global_loss_pct	worst_cell_loss_pct	simplicity_id	simplicity_terms	eligible
+cell2_overall2	EN	0	0	0.0	0.0	0.0	0	0	6
+cell2_overall2	Beam	5208	5	0.19641099141678442	0.0002031102165789278	0.8771507713374538	0	0	2531
+cell5_overall2	EN	0	0	0.0	0.0	0.0	0	0	6
+cell5_overall2	Beam	5208	5	0.19641099141678442	0.0002031102165789278	0.8771507713374538	0	0	2544
+cell10_overall5	EN	0	0	0.0	0.0	0.0	0	0	6
+cell10_overall5	Beam	5208	5	0.19641099141678442	0.0002031102165789278	0.8771507713374538	0	0	2544

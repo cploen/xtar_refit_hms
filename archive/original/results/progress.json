@@ -1,0 +1,44 @@
+[
+  {
+    "step": 0,
+    "evaluated": 22,
+    "terms": 0,
+    "score": 0.11325321364809918,
+    "condition": 1.0
+  },
+  {
+    "step": 1,
+    "evaluated": 102,
+    "terms": 1,
+    "score": 0.11303695349398668,
+    "condition": 1.0
+  },
+  {
+    "step": 2,
+    "evaluated": 862,
+    "terms": 2,
+    "score": 0.11294536499895189,
+    "condition": 1.0778878561251646
+  },
+  {
+    "step": 3,
+    "evaluated": 2498,
+    "terms": 3,
+    "score": 0.11287615219197493,
+    "condition": 1.2316901688140267
+  },
+  {
+    "step": 4,
+    "evaluated": 4190,
+    "terms": 4,
+    "score": 0.11283181645195663,
+    "condition": 1.2363800906998326
+  },
+  {
+    "step": 5,
+    "evaluated": 5838,
+    "terms": 5,
+    "score": 0.11280876702868979,
+    "condition": 2.1616129796663626
+  }
+]
