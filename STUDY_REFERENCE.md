@@ -245,6 +245,15 @@ the strongest model under the xtar selection metric. The scan performed no
 new beam exploration. Since the original search used strict gates, it may
 have pruned paths to bases that a new relaxed-gate search could explore.
 
+More precisely, these are **13 additional fits at larger correction
+amplitudes**. They use 13 distinct basis masks, but every mask already has a
+fit passing the strict policy at a smaller amplitude. Candidate 268 newly
+passes at amplitude 0.5, and the other twelve newly pass at amplitude 1.0.
+Thus the relaxed limits admit no basis masks that were absent from the strict
+eligible set. This distinction follows from comparing `mask` and `amplitude`
+in `archive/tolerance_scan/candidate_scores.tsv`. “Thirteen new basis
+combinations” would misdescribe this result.
+
 ### Informational five-term model
 
 All changes below compare the strongest eligible correction against the

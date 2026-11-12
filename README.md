@@ -16,8 +16,8 @@ development sample.
 The strongest eligible five-term correction reduced xtar residual SD by
 **0.196% in validation** and **0.221% on the reserved sample**, relative to the
 completed 2018 refit. It passed the original downstream safeguards. Relaxing the
-SD limits admitted 13 additional saved candidates but retained the same
-strongest model.
+SD limits admitted 13 additional fits at larger correction amplitudes but
+retained the same best fit. Their bases already passed at smaller amplitudes.
 
 **The original simplicity rule selected zero correction. No correction was
 adopted or installed in replay.** The gain was small, and the scan did not
