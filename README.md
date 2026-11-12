@@ -13,11 +13,11 @@ The transport coefficients remained fixed. The study used three validation
 folds grouped by run, followed by evaluation on a previously inspected reserved
 development sample.
 
-The strongest eligible five-term correction reduced xtar residual SD by
+The strongest eligible five-term correction reduced xtar residual standard deviation (SD) by
 **0.196% in validation** and **0.221% on the reserved sample**, relative to the
 completed 2018 refit. It passed the original downstream safeguards. Relaxing the
-SD limits admitted 13 additional fits at larger correction amplitudes but
-retained the same best fit. Their bases already passed at smaller amplitudes.
+SD limits admitted 13 additional fits with stronger corrections but
+retained the same best fit. Their bases already passed with weaker corrections.
 
 **The original simplicity rule selected zero correction. No correction was
 adopted or installed in replay.** The gain was small, and the scan did not

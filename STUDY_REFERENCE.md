@@ -99,6 +99,16 @@ describe the training population composition and are not a train/test split.
 Three validation folds keep complete runs together. The saved `folds.tsv`,
 when present in the original output, records event-to-fold assignments.
 
+**Core** denotes the dense central regions of the accepted sieve-hole event
+clusters selected by the frozen density map. **Inner shoulder** is the nearby,
+lower-density band used in the training mixture. It requires quality=1,
+core_keep=0 and a finite relative density score 0.40 ≤ q < 0.50, where
+`q = (density − background) / (peak density − background)`. These definitions
+are implemented in [core_sample.py](source/dependencies/core_sample.py) and
+[mixed_sample.py](source/dependencies/mixed_sample.py). Reserved shoulder
+diagnostics use the supported quality-1 population, which is not restricted
+to this training band.
+
 Models and coefficients are frozen before loading the reserved sample.
 Training and reserved event identities are checked for overlap. The reserved
 loader returns 103,268 events. The eligible core/shoulder union has 99,769
@@ -144,6 +154,12 @@ search has width 30 and a maximum of six nonzero terms. Ridge strength 0.03
 remains in the final fit. Candidate amplitudes are 0.1, 0.25, 0.5 and 1, with
 zero correction always available. The numerical solve scales the design and
 uses direct augmented-design SVD, rather than solving normal equations.
+
+Here **amplitude** is the saved program's name for an overall correction scale
+factor. It multiplies every fitted correction coefficient, equivalently the
+whole correction function. A factor of 1 uses the full fitted correction and
+0.5 uses half. Changing this factor changes the correction strength without
+changing the basis. The slides use this description instead of “amplitude.”
 
 Rank-deficient designs and scaled condition numbers above 10,000 are rejected.
 The absolute correction must not exceed 0.2 cm on validation or reserved
@@ -254,7 +270,7 @@ eligible set. This distinction follows from comparing `mask` and `amplitude`
 in `archive/tolerance_scan/candidate_scores.tsv`. “Thirteen new basis
 combinations” would misdescribe this result.
 
-### Informational five-term model
+### Strongest eligible five-term correction
 
 All changes below compare the strongest eligible correction against the
 completed 2018 refit. SD gain is positive for improvement. Downstream SD change
@@ -322,6 +338,17 @@ shows a modest overall xptar improvement, accompanied by a small loss in the
 worst populated xptar cell. The original simplicity rule still prefers zero
 correction. The adopted reconstruction therefore remains the completed 2018
 refit without the additive correction.
+
+The five-term correction adds five nonzero correction coefficients compared
+with zero correction. Its gain exceeds the 0.1% minimum SD-improvement
+requirement, but does not overcome the predefined simplicity preference.
+Thus the small resolution gain does not justify the extra correction terms
+under this study's criteria.
+
+Fitting at another momentum setting would be a separate experiment. Examining
+a reduced basis of xtar-dependent transport terms to improve conditioning
+would also require a separate study. Neither has been performed here, and
+relaxing the limits in the completed scan does not change its conclusion.
 
 The tolerance scan establishes that relaxing the specified limits does not
 change the leading saved candidate under the xtar objective. It does not
